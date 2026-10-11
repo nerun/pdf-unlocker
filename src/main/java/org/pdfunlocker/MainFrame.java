@@ -44,6 +44,7 @@ import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultCellEditor;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComponent;
@@ -109,6 +110,12 @@ public final class MainFrame extends JFrame {
 
     public MainFrame() {
         super(APP_NAME);
+
+        ImageIcon icon = new ImageIcon(
+                MainFrame.class.getResource("/icons/pdf-unlocker.png")
+        );
+        setIconImage(icon.getImage());
+
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         buildTable();
@@ -342,11 +349,16 @@ public final class MainFrame extends JFrame {
             }
         });
 
+        ImageIcon icon = new ImageIcon(
+                MainFrame.class.getResource("/icons/pdf-unlocker_64px.png")
+        );
+
         JOptionPane.showMessageDialog(
                 this,
                 pane,
                 I18n.t("about.title"),
-                JOptionPane.INFORMATION_MESSAGE
+                JOptionPane.PLAIN_MESSAGE,
+                icon
         );
     }
 
