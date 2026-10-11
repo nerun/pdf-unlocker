@@ -1,0 +1,20 @@
+PDF Unlocker
+Copyright 2026 Daniel Dias Rodrigues <danieldiasr@gmail.com>
+
+This product is licensed under the Apache License, Version 2.0
+(see the LICENSE file).
+
+This product includes software developed by third parties:
+
+  * Apache PDFBox (https://pdfbox.apache.org/)
+    Copyright 2002-2026 The Apache Software Foundation
+    Licensed under the Apache License, Version 2.0.
+
+  * FlatLaf (https://www.formdev.com/flatlaf/)
+    Copyright 2019-2026 FormDev Software GmbH
+    Licensed under the Apache License, Version 2.0.
+
+The distributable JAR built by this project (target/pdf-unlocker.jar)
+bundles the compiled classes of the above libraries. Their own license
+and notice files are merged into that JAR's META-INF directory by the
+build (see pom.xml).

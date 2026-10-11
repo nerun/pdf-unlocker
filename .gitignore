@@ -1,0 +1,46 @@
+# Dependencies / packages
+vendor/
+node_modules/
+
+# Build / distribution
+build/
+dist/
+target/
+
+# Environment / secrets
+.env
+.env.*
+
+# Logs / temp files
+*.log
+*.tmp
+*.cache
+
+# OS files
+.DS_Store
+Thumbs.db
+*~
+
+# Test / coverage
+coverage/
+
+# Misc
+*.bak
+*.swp
+
+# Editors / IDEs
+
+# Eclipse
+.classpath
+.project
+.settings/
+
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# VS Code
+.vscode/
+
+# JVM crash logs
+hs_err_pid*

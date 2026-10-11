@@ -1,0 +1,34 @@
+name: Java Syntax Check
+
+on:
+  push:
+    paths:
+      - "**/*.java"
+      - "pom.xml"
+      - ".github/workflows/java-syntax.yml"
+  pull_request:
+    paths:
+      - "**/*.java"
+      - "pom.xml"
+      - ".github/workflows/java-syntax.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  java-syntax:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "25"
+          cache: maven
+
+      - name: Check Java syntax
+        run: mvn --batch-mode --no-transfer-progress -DskipTests compile
