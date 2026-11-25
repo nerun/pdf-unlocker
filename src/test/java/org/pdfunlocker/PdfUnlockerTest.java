@@ -131,4 +131,48 @@ class PdfUnlockerTest {
         assertEquals(PdfUnlocker.Outcome.ERROR,
             PdfUnlocker.unlock(in, dir.resolve("g_out.pdf"), "").outcome());
     }
+
+    @Test
+    void restrictionOnlyFileUnlocksEvenWithAWrongTypedPassword() throws IOException {
+        for (int bits : new int[] {40, 128, 256}) {
+            Path in = makePdf("typed" + bits + ".pdf", "owner-secret", "", bits);
+            Path out = dir.resolve("typed" + bits + "_out.pdf");
+            PdfUnlocker.Result r = PdfUnlocker.unlock(in, out, "not-the-password");
+            assertEquals(PdfUnlocker.Outcome.UNLOCKED, r.outcome(), r.message());
+            assertOpenWithoutPassword(out);
+        }
+    }
+
+    /** Hides the {@code /Perms} key (same length, so offsets stay valid). */
+    private static void removePerms(Path file) throws IOException {
+        byte[] bytes = Files.readAllBytes(file);
+        byte[] key = "/Perms".getBytes(java.nio.charset.StandardCharsets.US_ASCII);
+        int found = 0;
+        for (int i = 0; i + key.length <= bytes.length; i++) {
+            if (java.util.Arrays.equals(bytes, i, i + key.length, key, 0, key.length)) {
+                bytes[i + 1] = 'X';
+                found++;
+            }
+        }
+        assertTrue(found > 0, "the test file should carry a /Perms entry");
+        Files.write(file, bytes);
+    }
+
+    @Test
+    void aes256FileWithoutPermsEntryStillUnlocks() throws IOException {
+        Path restricted = makePdf("noperms_owner.pdf", "owner-secret", "", 256);
+        removePerms(restricted);
+        Path out1 = dir.resolve("noperms_owner_out.pdf");
+        PdfUnlocker.Result r1 = PdfUnlocker.unlock(restricted, out1, "");
+        assertEquals(PdfUnlocker.Outcome.UNLOCKED, r1.outcome(), r1.message());
+        assertOpenWithoutPassword(out1);
+
+        Path locked = makePdf("noperms_user.pdf", "owner-secret", "open-me", 256);
+        removePerms(locked);
+        Path out2 = dir.resolve("noperms_user_out.pdf");
+        assertEquals(PdfUnlocker.Outcome.PASSWORD_REQUIRED, PdfUnlocker.unlock(locked, out2, "wrong").outcome());
+        PdfUnlocker.Result r2 = PdfUnlocker.unlock(locked, out2, "open-me");
+        assertEquals(PdfUnlocker.Outcome.UNLOCKED, r2.outcome(), r2.message());
+        assertOpenWithoutPassword(out2);
+    }
 }

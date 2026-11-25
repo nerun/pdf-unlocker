@@ -77,7 +77,7 @@ import org.pdfunlocker.i18n.I18n;
 public final class MainFrame extends JFrame {
 
     private static final String APP_NAME = "PDF Unlocker";
-    private static final String VERSION = "1.0.0";
+    private static final String VERSION = "1.1.0";
     private static final String PROJECT_URL = "https://github.com/nerun/pdf-unlocker";
     private static final String COPYRIGHT = "© 2026 Daniel Dias Rodrigues";
 

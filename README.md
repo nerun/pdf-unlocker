@@ -11,7 +11,8 @@ based on the operating system's language.
 ## What it does
 
 - **Removes restrictions** (printing, text copying, editing, annotations) from PDFs that open
-  without a password.
+  without a password, even if a password was typed for them (the empty password is always tried
+  first).
 - **Removes the opening password** when you provide it (a single password for all files, or one per
   file).
 - Processes several files at once: add files, whole folders (including subfolders), or drag and
@@ -20,7 +21,9 @@ based on the operating system's language.
   original.
 - Never alters the original unless you check "Overwrite". Writing goes through a temporary file
   first, so a failure never leaves a corrupted PDF.
-- Supports RC4 40/128-bit and AES 128/256-bit encryption.
+- Supports RC4 40/128-bit and AES 128/256-bit encryption, including AES-256 files whose `/Perms`
+  entry is missing or damaged (it only double-checks the permission flags, so it is not needed to
+  decrypt).
 - **Bilingual interface**: if the system language is Portuguese (`pt`, `pt_BR`, `pt_PT`, etc.), the
   interface appears in Brazilian Portuguese; otherwise, in English.
 

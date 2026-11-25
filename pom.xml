@@ -6,7 +6,7 @@
 
   <groupId>org.pdfunlocker</groupId>
   <artifactId>pdf-unlocker</artifactId>
-  <version>1.0.0</version>
+  <version>1.1.0</version>
   <packaging>jar</packaging>
   <name>PDF Unlocker</name>
   <description>Free and open source desktop tool that removes passwords and restrictions from PDF files.</description>
