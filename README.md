@@ -1,12 +1,23 @@
-# PDF Unlocker
+<h1 align="center">
+  PDF Unlocker
+</h1>
 
-Copyright 2026 Daniel Dias Rodrigues \<danieldiasr@gmail.com\>. Licensed under the
-[Apache License, Version 2.0](LICENSE).
+<p align="center">
+  <img alt="License: Apache-2.0" src="https://img.shields.io/badge/license-Apache--2.0-orange?style=flat">
+  <img alt="Written in Java" src="https://img.shields.io/badge/written%20in-Java-orange?style=flat">
+  <img alt="Platforms: Any JVM compatible" src="https://img.shields.io/badge/runs%20on-Any_JVM_compatible-orange?style=flat">
+</p>
 
 A free and open-source alternative to tools like "PDF Password Remover": a desktop
 GUI (Java Swing) to remove passwords and restrictions from PDF files in batch.
 The interface is bilingual (Brazilian Portuguese / English), chosen automatically
 based on the operating system's language.
+
+<p align="center">
+  <picture>
+    <img src="assets/screenshot.png" style="width:75%" alt="PDF Unlocker screenshot">
+  </picture>
+</p>
 
 ## What it does
 
@@ -74,5 +85,8 @@ See the [NOTICE](NOTICE) file for these libraries' attribution notices.
 
 ## License
 
-Apache License, Version 2.0 — see [LICENSE](LICENSE). Same license as both of the
-project's dependencies, which avoids any licensing conflict in the final jar.
+Copyright 2026 Daniel Dias Rodrigues \<danieldiasr@gmail.com\>.
+
+Licensed under the [Apache License, Version 2.0](LICENSE). Same license as both
+of the project's dependencies, which avoids any licensing conflict in the final
+jar.
