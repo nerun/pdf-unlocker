@@ -15,7 +15,7 @@ based on the operating system's language.
 
 <p align="center">
   <picture>
-    <img src="assets/screenshot.png" style="width:50%" alt="PDF Unlocker screenshot">
+    <img src="assets/screenshot.png" style="width:75%" alt="PDF Unlocker screenshot">
   </picture>
 </p>
 
